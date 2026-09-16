@@ -12,6 +12,7 @@
 | `Shopping.mp4`        | Shopping Local for Jaguars NFL Merch  | 0:08     |
 | `DisneyTryOn.mp4`     | Disney x Champion NFL Apparel Try-On  | 0:40     |
 | `posters/*.jpg`       | Card thumbnails, one frame per video  | —        |
+| `photos/maya-portrait.jpg` | Product storytelling side photo  | —        |
 
 The first three sit in "Product storytelling", the next two in "Sport and
 wellness", the last two in "Brands and culture". All three sections use the
@@ -54,3 +55,12 @@ Drop the new file in as `AB.mp4`, `LMNT.mp4` or `Disney.mp4` (H.264 + AAC,
 faststart), grab a new poster frame with the command above, and update the
 duration in `index.html` if you want the printed value correct before the
 first play.
+
+## Photos
+
+`photos/maya-portrait.jpg` is `Maya12097 (1).jpg` from the repo root, resized
+from 4338x5422 (12MB) to 900x1125 for the web. The ratio is unchanged at 4:5,
+which is also the aspect of the frame it sits in, so the full photo is shown
+with nothing cropped:
+
+    ffmpeg -i "../Maya12097 (1).jpg" -vf scale=900:1125:flags=lanczos -q:v 3 photos/maya-portrait.jpg

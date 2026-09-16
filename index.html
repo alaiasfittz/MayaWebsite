@@ -124,9 +124,9 @@ section{padding:88px 0}
 .statcard span{display:block;font-size:13px;color:var(--brown);margin-top:6px}
 
 /* video showcase */
-.vhead{margin:0 0 26px}
-.vhead h3{font-family:"Fraunces",serif;font-weight:500;font-size:30px;margin:0;letter-spacing:-.03em;line-height:1.02}
-.vidrow{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:920px;margin:0 auto}
+.pgrid{display:grid;grid-template-columns:142px minmax(0,1fr) 206px;gap:22px;align-items:start}
+.pgrid .side{gap:0}
+.vidrow{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .vcard{margin:0}
 .vthumb{display:block;width:100%;padding:8px;margin:0;background:#fff;border:1px solid var(--sand);border-radius:5px;
   font:inherit;color:inherit;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
@@ -213,6 +213,10 @@ body.vlock{overflow:hidden}
 footer{border-top:1px solid var(--sand);padding:26px 0 44px;font-size:13.5px;color:var(--brown);
   display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
+@media (max-width:1040px){
+  .pgrid{grid-template-columns:1fr;gap:28px}
+  .pgrid .side{max-width:340px;margin:0 auto}
+}
 @media (max-width:1000px){
   .board-grid{grid-template-columns:1fr 1fr;gap:20px}
   .pillar{grid-column:1 / -1}
@@ -536,59 +540,65 @@ footer{border-top:1px solid var(--sand);padding:26px 0 44px;font-size:13.5px;col
     </div>
 
     <div class="board warm">
-      <div class="vhead">
-        <h3>Product storytelling</h3>
-      </div>
-      <div class="vidrow">
+      <div class="pgrid">
+        <div class="pillar">
+          <h3>Product storytelling</h3>
+        </div>
+          <div class="vidrow">
 
-        <article class="vcard">
-          <button class="vthumb" type="button" data-video="media/AB.mp4"
-                  data-poster="media/posters/AB.jpg" aria-label="Play video: Game-Day Style with Abercrombie x NFL">
-            <span class="vshot">
-              <img src="media/posters/AB.jpg" alt="Maya in a Jaguars jersey talking through the Abercrombie x NFL collection" loading="lazy" decoding="async">
-              <span class="vplay" aria-hidden="true">
-                <svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M21 10.27a2 2 0 0 1 0 3.46L3 24.12A2 2 0 0 1 0 22.39V1.61A2 2 0 0 1 3 -.12Z" fill="#17120F"/></svg>
+          <article class="vcard">
+            <button class="vthumb" type="button" data-video="media/AB.mp4"
+                    data-poster="media/posters/AB.jpg" aria-label="Play video: Game-Day Style with Abercrombie x NFL">
+              <span class="vshot">
+                <img src="media/posters/AB.jpg" alt="Maya in a Jaguars jersey talking through the Abercrombie x NFL collection" loading="lazy" decoding="async">
+                <span class="vplay" aria-hidden="true">
+                  <svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M21 10.27a2 2 0 0 1 0 3.46L3 24.12A2 2 0 0 1 0 22.39V1.61A2 2 0 0 1 3 -.12Z" fill="#17120F"/></svg>
+                </span>
+                <span class="vfallback" aria-hidden="true">Game-Day Style with Abercrombie x NFL<br><i>video unavailable</i></span>
               </span>
-              <span class="vfallback" aria-hidden="true">Game-Day Style with Abercrombie x NFL<br><i>video unavailable</i></span>
-            </span>
-          </button>
-          <div class="vmeta"><span class="tag organic">Organic product content</span>
-            <h4>Game-Day Style with Abercrombie x NFL</h4>
-            <p>Short-form video<span class="dur"> · 0:46</span></p></div>
-        </article>
+            </button>
+            <div class="vmeta"><span class="tag organic">Organic product content</span>
+              <h4>Game-Day Style with Abercrombie x NFL</h4>
+              <p>Short-form video<span class="dur"> · 0:46</span></p></div>
+          </article>
 
-        <article class="vcard">
-          <button class="vthumb" type="button" data-video="media/LMNT.mp4"
-                  data-poster="media/posters/LMNT.jpg" aria-label="Play video: Hydration Before Game Day">
-            <span class="vshot">
-              <img src="media/posters/LMNT.jpg" alt="An LMNT electrolyte stick being lifted from the box on a kitchen counter" loading="lazy" decoding="async">
-              <span class="vplay" aria-hidden="true">
-                <svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M21 10.27a2 2 0 0 1 0 3.46L3 24.12A2 2 0 0 1 0 22.39V1.61A2 2 0 0 1 3 -.12Z" fill="#17120F"/></svg>
+          <article class="vcard">
+            <button class="vthumb" type="button" data-video="media/LMNT.mp4"
+                    data-poster="media/posters/LMNT.jpg" aria-label="Play video: Hydration Before Game Day">
+              <span class="vshot">
+                <img src="media/posters/LMNT.jpg" alt="An LMNT electrolyte stick being lifted from the box on a kitchen counter" loading="lazy" decoding="async">
+                <span class="vplay" aria-hidden="true">
+                  <svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M21 10.27a2 2 0 0 1 0 3.46L3 24.12A2 2 0 0 1 0 22.39V1.61A2 2 0 0 1 3 -.12Z" fill="#17120F"/></svg>
+                </span>
+                <span class="vfallback" aria-hidden="true">Hydration Before Game Day<br><i>video unavailable</i></span>
               </span>
-              <span class="vfallback" aria-hidden="true">Hydration Before Game Day<br><i>video unavailable</i></span>
-            </span>
-          </button>
-          <div class="vmeta"><span class="tag organic">Organic product content</span>
-            <h4>Hydration Before Game Day</h4>
-            <p>Short-form video<span class="dur"> · 0:06</span></p></div>
-        </article>
+            </button>
+            <div class="vmeta"><span class="tag organic">Organic product content</span>
+              <h4>Hydration Before Game Day</h4>
+              <p>Short-form video<span class="dur"> · 0:06</span></p></div>
+          </article>
 
-        <article class="vcard">
-          <button class="vthumb" type="button" data-video="media/Disney.mp4"
-                  data-poster="media/posters/Disney.jpg" aria-label="Play video: Game-Day Style with Disney x Champion">
-            <span class="vshot">
-              <img src="media/posters/Disney.jpg" alt="Maya holding up a green Seattle Seahawks tee from the Disney x Champion collab" loading="lazy" decoding="async">
-              <span class="vplay" aria-hidden="true">
-                <svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M21 10.27a2 2 0 0 1 0 3.46L3 24.12A2 2 0 0 1 0 22.39V1.61A2 2 0 0 1 3 -.12Z" fill="#17120F"/></svg>
+          <article class="vcard">
+            <button class="vthumb" type="button" data-video="media/Disney.mp4"
+                    data-poster="media/posters/Disney.jpg" aria-label="Play video: Game-Day Style with Disney x Champion">
+              <span class="vshot">
+                <img src="media/posters/Disney.jpg" alt="Maya holding up a green Seattle Seahawks tee from the Disney x Champion collab" loading="lazy" decoding="async">
+                <span class="vplay" aria-hidden="true">
+                  <svg width="22" height="24" viewBox="0 0 22 24" fill="none"><path d="M21 10.27a2 2 0 0 1 0 3.46L3 24.12A2 2 0 0 1 0 22.39V1.61A2 2 0 0 1 3 -.12Z" fill="#17120F"/></svg>
+                </span>
+                <span class="vfallback" aria-hidden="true">Game-Day Style with Disney x Champion<br><i>video unavailable</i></span>
               </span>
-              <span class="vfallback" aria-hidden="true">Game-Day Style with Disney x Champion<br><i>video unavailable</i></span>
-            </span>
-          </button>
-          <div class="vmeta"><span class="tag organic">Organic product content</span>
-            <h4>Game-Day Style with Disney x Champion</h4>
-            <p>Short-form video<span class="dur"> · 1:27</span></p></div>
-        </article>
+            </button>
+            <div class="vmeta"><span class="tag organic">Organic product content</span>
+              <h4>Game-Day Style with Disney x Champion</h4>
+              <p>Short-form video<span class="dur"> · 1:27</span></p></div>
+          </article>
 
+        </div>
+        <div class="side">
+          <div class="frame tall tilt-b"><div class="ph"><img src="media/photos/maya-portrait.jpg"
+            alt="Studio portrait of Maya Ogunjobi in a black blazer" loading="lazy" decoding="async"></div></div>
+        </div>
       </div>
     </div>
 
