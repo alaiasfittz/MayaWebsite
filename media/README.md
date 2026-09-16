@@ -7,7 +7,12 @@
 | `AB.mp4`              | Game-Day Style with Abercrombie x NFL | 0:46     |
 | `LMNT.mp4`            | Hydration Before Game Day             | 0:06     |
 | `Disney.mp4`          | Game-Day Style with Disney x Champion | 1:27     |
+| `EatInADay.mp4`       | What I Eat in a Day as an NFL Cheerleader | 0:29 |
+| `Heat.mp4`            | How NFL Cheerleaders Prepare for the Heat | 0:10 |
 | `posters/*.jpg`       | Card thumbnails, one frame per video  | —        |
+
+The first three sit in "Product storytelling", the last two in "Sport and
+wellness". Both sections use the same card and modal player.
 
 The page loads only the poster images up front; a video is fetched when its
 card is clicked. Durations are printed in the HTML and re-synced from the file
@@ -15,9 +20,10 @@ itself the first time the video plays, so swapping a file keeps them honest.
 
 ## Where they came from
 
-The originals (`AB.MP4`, `LMNT.MOV`, `Disney.MP4` in the repo root) are HEVC /
-H.265, which Firefox cannot play and Chrome only plays on some machines. They
-were transcoded to H.264 + AAC, which every current browser supports:
+The originals in the repo root (`AB.MP4`, `LMNT.MOV`, `Disney.MP4`,
+`Sports2.MP4` -> EatInADay, `sports.MP4` -> Heat) are HEVC / H.265, which
+Firefox cannot play and Chrome only plays on some machines. They were
+transcoded to H.264 + AAC, which every current browser supports:
 
     ffmpeg -i ../AB.MP4     -vf scale=576:1024:flags=lanczos -c:v libx264 -profile:v high \
            -crf 26 -preset slow -pix_fmt yuv420p -c:a aac -b:a 112k -ac 2 \
@@ -33,6 +39,8 @@ Posters were pulled from the transcoded files:
     ffmpeg -ss 4   -i AB.mp4     -frames:v 1 -q:v 3 posters/AB.jpg
     ffmpeg -ss 1.4 -i LMNT.mp4   -frames:v 1 -q:v 3 posters/LMNT.jpg
     ffmpeg -ss 35  -i Disney.mp4 -frames:v 1 -q:v 3 posters/Disney.jpg
+    ffmpeg -ss 1   -i EatInADay.mp4 -frames:v 1 -q:v 3 posters/EatInADay.jpg
+    ffmpeg -ss 0.5 -i Heat.mp4      -frames:v 1 -q:v 3 posters/Heat.jpg
 
 ## Replacing a video
 
