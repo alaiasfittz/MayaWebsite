@@ -9,10 +9,13 @@
 | `Disney.mp4`          | Game-Day Style with Disney x Champion | 1:27     |
 | `EatInADay.mp4`       | What I Eat in a Day as an NFL Cheerleader | 0:29 |
 | `Heat.mp4`            | How NFL Cheerleaders Prepare for the Heat | 0:10 |
+| `Shopping.mp4`        | Shopping Local for Jaguars NFL Merch  | 0:08     |
+| `DisneyTryOn.mp4`     | Disney x Champion NFL Apparel Try-On  | 0:40     |
 | `posters/*.jpg`       | Card thumbnails, one frame per video  | —        |
 
-The first three sit in "Product storytelling", the last two in "Sport and
-wellness". Both sections use the same card and modal player.
+The first three sit in "Product storytelling", the next two in "Sport and
+wellness", the last two in "Brands and culture". All three sections use the
+same card and modal player.
 
 The page loads only the poster images up front; a video is fetched when its
 card is clicked. Durations are printed in the HTML and re-synced from the file
@@ -21,7 +24,8 @@ itself the first time the video plays, so swapping a file keeps them honest.
 ## Where they came from
 
 The originals in the repo root (`AB.MP4`, `LMNT.MOV`, `Disney.MP4`,
-`Sports2.MP4` -> EatInADay, `sports.MP4` -> Heat) are HEVC / H.265, which
+`Sports2.MP4` -> EatInADay, `sports.MP4` -> Heat, `shopping.MP4` ->
+Shopping, `disneytryon.MP4` -> DisneyTryOn) are HEVC / H.265, which
 Firefox cannot play and Chrome only plays on some machines. They were
 transcoded to H.264 + AAC, which every current browser supports:
 
@@ -41,6 +45,8 @@ Posters were pulled from the transcoded files:
     ffmpeg -ss 35  -i Disney.mp4 -frames:v 1 -q:v 3 posters/Disney.jpg
     ffmpeg -ss 1   -i EatInADay.mp4 -frames:v 1 -q:v 3 posters/EatInADay.jpg
     ffmpeg -ss 0.5 -i Heat.mp4      -frames:v 1 -q:v 3 posters/Heat.jpg
+    ffmpeg -ss 0.4 -i Shopping.mp4    -frames:v 1 -q:v 3 posters/Shopping.jpg
+    ffmpeg -ss 38  -i DisneyTryOn.mp4 -frames:v 1 -q:v 3 posters/DisneyTryOn.jpg
 
 ## Replacing a video
 
