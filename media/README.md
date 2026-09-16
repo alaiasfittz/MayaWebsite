@@ -1,21 +1,42 @@
-# Video files for the "Product storytelling" section
+# Video assets for the "Product storytelling" section
 
-Drop the three source videos in this folder using these exact names:
+## What is served
 
-| File            | Card                                        |
-|-----------------|---------------------------------------------|
-| `AB.mp4`        | Game-Day Style with Abercrombie x NFL       |
-| `LMNT.mp4`      | Hydration Before Game Day                   |
-| `Disney.mp4`    | Game-Day Style with Disney x Champion       |
+| File                  | Card                                  | Duration |
+|-----------------------|---------------------------------------|----------|
+| `AB.mp4`              | Game-Day Style with Abercrombie x NFL | 0:46     |
+| `LMNT.mp4`            | Hydration Before Game Day             | 0:06     |
+| `Disney.mp4`          | Game-Day Style with Disney x Champion | 1:27     |
+| `posters/*.jpg`       | Card thumbnails, one frame per video  | —        |
 
-Notes:
+The page loads only the poster images up front; a video is fetched when its
+card is clicked. Durations are printed in the HTML and re-synced from the file
+itself the first time the video plays, so swapping a file keeps them honest.
 
-- The page also accepts the original upper-case extensions (`AB.MP4`,
-  `Disney.MP4`) and falls back to `LMNT.MOV` if no `LMNT.mp4` is present.
-- `.MOV` (QuickTime) does not play in Firefox and is unreliable in Chrome.
-  Convert it for the web before publishing:
-  `ffmpeg -i LMNT.MOV -c:v libx264 -crf 23 -preset slow -c:a aac -movflags +faststart LMNT.mp4`
-- Run the same `-movflags +faststart` step on the MP4s so the browser can
-  read metadata (and the poster frame) without downloading the whole file.
-- Card duration and poster frame are read from the video at runtime, so no
-  extra poster images are needed.
+## Where they came from
+
+The originals (`AB.MP4`, `LMNT.MOV`, `Disney.MP4` in the repo root) are HEVC /
+H.265, which Firefox cannot play and Chrome only plays on some machines. They
+were transcoded to H.264 + AAC, which every current browser supports:
+
+    ffmpeg -i ../AB.MP4     -vf scale=576:1024:flags=lanczos -c:v libx264 -profile:v high \
+           -crf 26 -preset slow -pix_fmt yuv420p -c:a aac -b:a 112k -ac 2 \
+           -movflags +faststart AB.mp4
+    ffmpeg -i ../Disney.MP4 -vf scale=576:1024:flags=lanczos ... -crf 26 ... Disney.mp4
+    ffmpeg -i ../LMNT.MOV   -vf scale=720:1280:flags=lanczos ... -crf 25 ... LMNT.mp4
+
+`+faststart` puts the metadata at the front of the file so playback can begin
+before the whole file has downloaded.
+
+Posters were pulled from the transcoded files:
+
+    ffmpeg -ss 4   -i AB.mp4     -frames:v 1 -q:v 3 posters/AB.jpg
+    ffmpeg -ss 1.4 -i LMNT.mp4   -frames:v 1 -q:v 3 posters/LMNT.jpg
+    ffmpeg -ss 35  -i Disney.mp4 -frames:v 1 -q:v 3 posters/Disney.jpg
+
+## Replacing a video
+
+Drop the new file in as `AB.mp4`, `LMNT.mp4` or `Disney.mp4` (H.264 + AAC,
+faststart), grab a new poster frame with the command above, and update the
+duration in `index.html` if you want the printed value correct before the
+first play.
