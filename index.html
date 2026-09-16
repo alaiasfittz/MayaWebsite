@@ -144,6 +144,20 @@ section{padding:88px 0}
 .vplay svg{margin-left:4px}
 .vthumb:hover .vplay{transform:scale(1.07);background:#fff}
 .vfallback{display:none}
+
+/* editorial profile card */
+.povcard{margin:0;background:var(--warm-white);border:1px solid var(--sand);border-radius:5px;overflow:hidden;
+  box-shadow:0 20px 44px -30px rgba(52,38,28,.5)}
+.pov-img{aspect-ratio:4/5;overflow:hidden;background:var(--paper)}
+.pov-img img{width:100%;height:100%;object-fit:cover;display:block}
+.pov-body{position:relative;padding:19px 19px 21px}
+.pov-body::before{content:"";position:absolute;left:19px;right:19px;top:0;height:1px;
+  background:linear-gradient(90deg,var(--butter),rgba(199,169,97,.12))}
+.pov-eyebrow{margin:0 0 11px;font-size:9px;font-weight:600;letter-spacing:.155em;
+  text-transform:uppercase;color:#A98C5B}
+.pov-lead{margin:0 0 13px;font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:15.5px;
+  line-height:1.38;letter-spacing:-.015em;color:var(--ink)}
+.pov-note{margin:0;font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:13px;color:var(--teal)}
 .vshot.missing{background:var(--paper);border:1px dashed var(--sand);display:flex;align-items:center;justify-content:center}
 .vshot.missing img,.vshot.missing .vplay,.vshot.missing::after{display:none}
 .vshot.missing .vfallback{display:block;text-align:center;font-size:13px;line-height:1.5;color:var(--brown);padding:0 16px}
@@ -642,8 +656,16 @@ footer{border-top:1px solid var(--sand);padding:26px 0 44px;font-size:13.5px;col
 
         </div>
         <div class="side">
-          <div class="frame tall tilt-b"><div class="ph"><img src="media/photos/maya-portrait.jpg"
-            alt="Studio portrait of Maya Ogunjobi in a black blazer" loading="lazy" decoding="async"></div></div>
+          <figure class="povcard">
+            <div class="pov-img"><img src="media/photos/maya-portrait.jpg"
+              alt="Studio portrait of Maya Ogunjobi in a black blazer" loading="lazy" decoding="async"></div>
+            <figcaption class="pov-body">
+              <p class="pov-eyebrow">The POV behind the work</p>
+              <p class="pov-lead">An athlete&#8217;s discipline, a marketer&#8217;s strategy, and a creator&#8217;s
+                instinct for what earns attention.</p>
+              <p class="pov-note">From concept to final cut.</p>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </div>
